@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Auto Peças Capital - Peças para motor, câmbio, freio, suspensão em geral. Mais de 20 anos de experiência em Maringá-PR.">
+    <title>Auto Peças Capital | Peças Automotivas em Maringá-PR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-dark: #1a1f3a;
+            --primary-blue: #2d4b8f;
+            --accent-blue: #4a90e2;
+            --bright-blue: #5dade2;
+            --light-gray: #ecf0f1;
+            --dark-gray: #2c3e50;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --gradient-primary: linear-gradient(135deg, #1a1f3a 0%, #2d4b8f 50%, #4a90e2 100%);
+            --gradient-overlay: linear-gradient(135deg, rgba(26, 31, 58, 0.95) 0%, rgba(45, 75, 143, 0.9) 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Header Styles */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(26, 31, 58, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+            animation: slideDown 0.5s ease-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-header {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent-blue);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: var(--gradient-primary);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            padding-top: 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(
+                    90deg,
+                    transparent,
+                    transparent 50px,
+                    rgba(255, 255, 255, 0.03) 50px,
+                    rgba(255, 255, 255, 0.03) 51px
+                ),
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 50px,
+                    rgba(255, 255, 255, 0.03) 50px,
+                    rgba(255, 255, 255, 0.03) 51px
+                );
+            animation: gridMove 20s linear infinite;
+        }
+
+        @keyframes gridMove {
+            0% {
+                transform: translate(0, 0);
+            }
+            100% {
+                transform: translate(50px, 50px);
+            }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .hero-logo {
+            max-width: 600px;
+            width: 90%;
+            height: auto;
+            margin: 0 auto 2rem;
+            filter: drop-shadow(0 10px 30px rgba(0, 0, 0, 0.5));
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 800;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.5);
+            animation: fadeInUp 1s ease-out 0.2s backwards;
+        }
+
+        .hero .tagline {
+            font-size: 1.5rem;
+            color: var(--bright-blue);
+            margin-bottom: 1rem;
+            font-weight: 300;
+            animation: fadeInUp 1s ease-out 0.4s backwards;
+        }
+
+        .hero .subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: fadeInUp 1s ease-out 0.6s backwards;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease-out 0.8s backwards;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            font-family: 'Rajdhani', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn-primary {
+            background: var(--accent-blue);
+            color: var(--text-light);
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: var(--bright-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 25px rgba(74, 144, 226, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            border: 2px solid var(--text-light);
+        }
+
+        .btn-secondary:hover {
+            background: var(--text-light);
+            color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        /* Stats Section */
+        .stats {
+            background: var(--dark-gray);
+            padding: 3rem 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            text-align: center;
+            color: var(--text-light);
+            animation: fadeIn 1s ease-out;
+        }
+
+        .stat-number {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--accent-blue);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            text-align: center;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: var(--accent-blue);
+            margin: 1rem auto;
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+
+        .about-text p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+
+        .about-highlights {
+            background: var(--gradient-primary);
+            padding: 2.5rem;
+            border-radius: 15px;
+            color: var(--text-light);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .about-highlights h3 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .highlight-icon {
+            font-size: 2rem;
+        }
+
+        /* Products Section */
+        .products {
+            padding: 5rem 2rem;
+            background: var(--light-gray);
+        }
+
+        .products-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .product-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--accent-blue);
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .product-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .product-card h3 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+        }
+
+        .product-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Novidades Section */
+        .novidades {
+            padding: 5rem 2rem;
+            background: white;
+        }
+
+        .novidades-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .novidades-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .novidade-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .novidade-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+            border-color: var(--accent-blue);
+        }
+
+        .novidade-image {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            background: var(--light-gray);
+        }
+
+        .novidade-content {
+            padding: 1.5rem;
+        }
+
+        .novidade-date {
+            font-size: 0.85rem;
+            color: var(--accent-blue);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .novidade-title {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.8rem;
+            font-weight: 700;
+        }
+
+        .novidade-excerpt {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .novidade-read-more {
+            color: var(--accent-blue);
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s;
+        }
+
+        .novidade-read-more:hover {
+            gap: 1rem;
+            color: var(--primary-blue);
+        }
+
+        /* Modal de Novidade */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background: rgba(0, 0, 0, 0.8);
+            animation: fadeIn 0.3s;
+        }
+
+        .modal-content {
+            background: white;
+            margin: 3% auto;
+            padding: 0;
+            max-width: 800px;
+            border-radius: 15px;
+            position: relative;
+            animation: slideDown 0.4s;
+        }
+
+        .modal-header {
+            position: relative;
+        }
+
+        .modal-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px 15px 0 0;
+        }
+
+        .modal-close {
+            position: absolute;
+            right: 1rem;
+            top: 1rem;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .modal-close:hover {
+            background: rgba(0, 0, 0, 0.8);
+            transform: rotate(90deg);
+        }
+
+        .modal-body {
+            padding: 2rem;
+        }
+
+        .modal-date {
+            color: var(--accent-blue);
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        .modal-title {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 2.5rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+
+        .modal-text {
+            color: #333;
+            line-height: 1.8;
+            font-size: 1.1rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: var(--light-gray);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: var(--primary-dark);
+            color: var(--text-light);
+            transform: translateX(10px);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            color: var(--accent-blue);
+            min-width: 40px;
+        }
+
+        .contact-item:hover .contact-icon {
+            color: var(--bright-blue);
+        }
+
+        .contact-details h3 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .contact-details p,
+        .contact-details a {
+            color: inherit;
+            text-decoration: none;
+            line-height: 1.6;
+        }
+
+        .contact-details a:hover {
+            text-decoration: underline;
+        }
+
+        .map-container {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            height: 450px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.5rem;
+            background: var(--accent-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .social-btn:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
+        }
+
+        .social-icon {
+            width: 24px;
+            height: 24px;
+            fill: white;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--primary-dark);
+            color: var(--text-light);
+            padding: 3rem 2rem 1.5rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+        }
+
+        .footer-section h4 {
+            font-family: 'Rajdhani', sans-serif;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+        }
+
+        .footer-section p {
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            opacity: 0.7;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(26, 31, 58, 0.98);
+                flex-direction: column;
+                padding: 2rem;
+                gap: 1rem;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .hero-logo {
+                max-width: 100%;
+                margin-bottom: 1.5rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.2rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .about-content,
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease-out;
+        }
+
+        .scroll-reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo-header">Auto Peças Capital</div>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" onclick="closeMenu()">Home</a></li>
+                <li><a href="#sobre" onclick="closeMenu()">Sobre</a></li>
+                <li><a href="#produtos" onclick="closeMenu()">Produtos</a></li>
+                <li><a href="#novidades" onclick="closeMenu()">Novidades</a></li>
+                <li><a href="#contato" onclick="closeMenu()">Contato</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Auto Peças Capital</h1>
+            <p class="tagline">Peças para motor, câmbio, freio, suspensão em geral</p>
+            <p class="subtitle">Mais de 20 anos de experiência fornecendo as melhores peças automotivas em Maringá e região</p>
+            <div class="cta-buttons">
+                <a href="#contato" class="btn btn-primary">Entre em Contato</a>
+                <a href="#produtos" class="btn btn-secondary">Nossos Produtos</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats">
+        <div class="stat-item">
+            <div class="stat-number">20+</div>
+            <div class="stat-label">Anos de Experiência</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">4.3★</div>
+            <div class="stat-label">Avaliação Google</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">1000+</div>
+            <div class="stat-label">Clientes Atendidos</div>
+        </div>
+        <div class="stat-item">
+            <div class="stat-number">100%</div>
+            <div class="stat-label">Peças Originais</div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about scroll-reveal" id="sobre">
+        <h2 class="section-title">Sobre Nós</h2>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Fundada em <strong>03 de fevereiro de 2004</strong>, a <strong>Auto Peças Capital</strong> é uma empresa consolidada no mercado de autopeças em Maringá-PR, com mais de 20 anos de história e tradição.</p>
+                <p>Localizada estrategicamente na Av. Morangueira, no Jardim Alvorada, atendemos toda a região com uma ampla gama de peças essenciais para veículos de todos os tipos.</p>
+                <p>Nossa missão é fornecer produtos de qualidade com preços competitivos e atendimento personalizado, garantindo que seu veículo esteja sempre em perfeitas condições.</p>
+                <p><strong>Razão Social:</strong> Ney de Barros - Autopeças<br>
+                <strong>CNPJ:</strong> 06.097.401/0001-98</p>
+            </div>
+            <div class="about-highlights">
+                <h3>Por que escolher a Auto Peças Capital?</h3>
+                <div class="highlight-item">
+                    <span class="highlight-icon">✓</span>
+                    <div>
+                        <strong>Experiência Comprovada</strong><br>
+                        Mais de duas décadas atendendo Maringá e região
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-icon">✓</span>
+                    <div>
+                        <strong>Qualidade Garantida</strong><br>
+                        Trabalhamos apenas com peças originais e certificadas
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-icon">✓</span>
+                    <div>
+                        <strong>Atendimento Personalizado</strong><br>
+                        Equipe especializada para orientar sua compra
+                    </div>
+                </div>
+                <div class="highlight-item">
+                    <span class="highlight-icon">✓</span>
+                    <div>
+                        <strong>Localização Estratégica</strong><br>
+                        Fácil acesso na Av. Morangueira
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products scroll-reveal" id="produtos">
+        <div class="products-container">
+            <h2 class="section-title">Nossos Produtos</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <span class="product-icon">🔧</span>
+                    <h3>Peças de Motor</h3>
+                    <p>Pistões, bielas, anéis, bronzinas, virabrequim e todas as peças necessárias para manutenção e reparo do motor do seu veículo.</p>
+                </div>
+                <div class="product-card">
+                    <span class="product-icon">⚙️</span>
+                    <h3>Câmbio</h3>
+                    <p>Peças completas para câmbio manual e automático, garantindo performance e durabilidade na transmissão.</p>
+                </div>
+                <div class="product-card">
+                    <span class="product-icon">🛑</span>
+                    <h3>Sistema de Freios</h3>
+                    <p>Pastilhas, discos, lonas, cilindros e todos os componentes para garantir a segurança do sistema de frenagem.</p>
+                </div>
+                <div class="product-card">
+                    <span class="product-icon">🔩</span>
+                    <h3>Suspensão</h3>
+                    <p>Amortecedores, molas, buchas, pivôs, bandejas e tudo para o conforto e estabilidade do seu veículo.</p>
+                </div>
+                <div class="product-card">
+                    <span class="product-icon">🔋</span>
+                    <h3>Sistema Elétrico</h3>
+                    <p>Baterias, alternadores, motores de arranque, velas de ignição e componentes elétricos em geral.</p>
+                </div>
+                <div class="product-card">
+                    <span class="product-icon">🛢️</span>
+                    <h3>Filtros e Óleos</h3>
+                    <p>Filtros de óleo, ar, combustível, cabine, além de óleos lubrificantes das melhores marcas do mercado.</p>
+                </div>
+                <div class="product-card">
+                    <span class="product-icon">🔨</span>
+                    <h3>Acessórios</h3>
+                    <p>Diversos acessórios automotivos para manutenção e proteção do seu veículo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Novidades Section -->
+    <section class="novidades scroll-reveal" id="novidades">
+        <div class="novidades-container">
+            <h2 class="section-title">Novidades</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 3rem;">Fique por dentro das últimas atualizações, promoções e produtos</p>
+            <div id="novidadesList" class="novidades-grid">
+                <p style="text-align: center; color: #999;">Carregando novidades...</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact scroll-reveal" id="contato">
+        <h2 class="section-title">Entre em Contato</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-details">
+                        <h3>Endereço</h3>
+                        <p>Av. Morangueira, 1309<br>
+                        Jardim Alvorada<br>
+                        Maringá - PR, 87033-070</p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-details">
+                        <h3>Telefones</h3>
+                        <p>
+                            <a href="tel:+554430318045">(44) 3031-8045</a><br>
+                            <a href="tel:+5544999676575">(44) 9 9767-6575</a><br>
+                            <a href="tel:+554430252697">(44) 3025-2697</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">🌐</div>
+                    <div class="contact-details">
+                        <h3>Redes Sociais</h3>
+                        <div class="social-links">
+                            <a href="https://www.instagram.com/autopcapital" target="_blank" class="social-btn">
+                                <svg class="social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                                </svg>
+                                Instagram
+                            </a>
+                            <a href="https://wa.me/5544997676575" target="_blank" class="social-btn">
+                                <svg class="social-icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                                </svg>
+                                WhatsApp
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-icon">⭐</div>
+                    <div class="contact-details">
+                        <h3>Avaliações</h3>
+                        <p>Avaliação 4.3/5 no Google<br>
+                        <a href="https://maps.app.goo.gl/E23Pv1CzViiRmgwXA" target="_blank">Ver avaliações →</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="map-container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3660.8773474582636!2d-51.95162!3d-23.407123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ecd0e1c9e1f1e9%3A0x5e5b5b5b5b5b5b5b!2sAv.%20Morangueira%2C%201309%20-%20Jardim%20Alvorada%2C%20Maring%C3%A1%20-%20PR%2C%2087033-070!5e0!3m2!1spt-BR!2sbr!4v1234567890" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info">
+                <div class="footer-section">
+                    <h4>Auto Peças Capital</h4>
+                    <p>Peças automotivas de qualidade para motor, câmbio, freio, suspensão e muito mais.</p>
+                    <p>Atendendo Maringá e região desde 2004.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Horário de Atendimento</h4>
+                    <p>Segunda a Sexta: 8h às 18h<br>
+                    Sábado: 8h às 12h<br>
+                    Domingo: Fechado</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Contato Rápido</h4>
+                    <p>📞 (44) 3031-8045<br>
+                    📱 (44) 9 9767-6575<br>
+                    📍 Av. Morangueira, 1309<br>
+                    Jardim Alvorada - Maringá/PR</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Auto Peças Capital - Ney de Barros Autopeças | CNPJ: 06.097.401/0001-98</p>
+                <p>Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Novidade -->
+    <div id="novidadeModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <img id="modalImage" class="modal-image" src="" alt="">
+                <span class="modal-close" onclick="closeModal()">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div id="modalDate" class="modal-date"></div>
+                <h2 id="modalTitle" class="modal-title"></h2>
+                <div id="modalContent" class="modal-text"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script type="module">
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js';
+        import { getFirestore, collection, getDocs, query, where, orderBy } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
+
+        // ⚠️ CONFIGURE SEU FIREBASE AQUI (mesmo config do admin)
+        const firebaseConfig = {
+  apiKey: "AIzaSyA5aKQJofX6gDDrBNxv4aNTZshc0M2pbY4",
+  authDomain: "autopecascapital-3f398.firebaseapp.com",
+  projectId: "autopecascapital-3f398",
+  storageBucket: "autopecascapital-3f398.firebasestorage.app",
+  messagingSenderId: "710935980358",
+  appId: "1:710935980358:web:2d9fadfaa3521cf10e5d47"
+};
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+
+        // Carregar Novidades Publicadas
+        async function loadNovidades() {
+            const novidadesList = document.getElementById('novidadesList');
+            
+            try {
+                const q = query(
+                    collection(db, 'novidades'), 
+                    where('status', '==', 'published'),
+                    orderBy('createdAt', 'desc')
+                );
+                const querySnapshot = await getDocs(q);
+                
+                if (querySnapshot.empty) {
+                    novidadesList.innerHTML = '<p style="text-align: center; color: #999; grid-column: 1/-1;">Nenhuma novidade publicada ainda.</p>';
+                    return;
+                }
+
+                novidadesList.innerHTML = '';
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    const card = createNovidadeCard(doc.id, data);
+                    novidadesList.appendChild(card);
+                });
+            } catch (error) {
+                console.error('Erro ao carregar novidades:', error);
+                novidadesList.innerHTML = '<p style="text-align: center; color: #e74c3c; grid-column: 1/-1;">Erro ao carregar novidades.</p>';
+            }
+        }
+
+        // Criar Card de Novidade
+        function createNovidadeCard(id, data) {
+            const card = document.createElement('div');
+            card.className = 'novidade-card';
+            
+            const imageUrl = data.image || 'https://via.placeholder.com/400x250/2d4b8f/ffffff?text=Auto+Peças+Capital';
+            const date = formatDate(data.createdAt);
+            
+            card.innerHTML = `
+                <img src="${imageUrl}" alt="${data.title}" class="novidade-image" onerror="this.src='https://via.placeholder.com/400x250/2d4b8f/ffffff?text=Auto+Peças+Capital'">
+                <div class="novidade-content">
+                    <div class="novidade-date">${date}</div>
+                    <h3 class="novidade-title">${data.title}</h3>
+                    <p class="novidade-excerpt">${data.excerpt}</p>
+                    <a href="#" class="novidade-read-more" onclick="openModal('${id}'); return false;">
+                        Ler mais →
+                    </a>
+                </div>
+            `;
+            
+            return card;
+        }
+
+        // Abrir Modal
+        window.openModal = async (id) => {
+            try {
+                const querySnapshot = await getDocs(collection(db, 'novidades'));
+                let novidadeData = null;
+                
+                querySnapshot.forEach((doc) => {
+                    if (doc.id === id) {
+                        novidadeData = doc.data();
+                    }
+                });
+
+                if (novidadeData) {
+                    const modal = document.getElementById('novidadeModal');
+                    const imageUrl = novidadeData.image || 'https://via.placeholder.com/800x400/2d4b8f/ffffff?text=Auto+Peças+Capital';
+                    
+                    document.getElementById('modalImage').src = imageUrl;
+                    document.getElementById('modalDate').textContent = formatDate(novidadeData.createdAt);
+                    document.getElementById('modalTitle').textContent = novidadeData.title;
+                    document.getElementById('modalContent').innerHTML = novidadeData.content.replace(/\n/g, '<br>');
+                    
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                }
+            } catch (error) {
+                console.error('Erro ao abrir modal:', error);
+            }
+        };
+
+        // Fechar Modal
+        window.closeModal = () => {
+            document.getElementById('novidadeModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        };
+
+        // Fechar modal ao clicar fora
+        window.onclick = (event) => {
+            const modal = document.getElementById('novidadeModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        };
+
+        // Format Date
+        function formatDate(timestamp) {
+            if (!timestamp) return 'Data não disponível';
+            const date = timestamp.toDate ? timestamp.toDate() : new Date(timestamp);
+            return date.toLocaleDateString('pt-BR', { 
+                day: '2-digit', 
+                month: 'long', 
+                year: 'numeric' 
+            });
+        }
+
+        // Carregar novidades quando a página carrega
+        loadNovidades();
+    </script>
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.remove('active');
+        }
+
+        // Smooth Scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Scroll Reveal Animation
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-reveal').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Header scroll effect
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.5)';
+            } else {
+                header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
+            }
+            
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>
